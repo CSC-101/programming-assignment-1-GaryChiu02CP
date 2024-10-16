@@ -2,7 +2,7 @@ import data
 import hw1
 import unittest
 
-from data import Price
+from data import Price, Point, Rectangle, Circle, Book, Employee
 
 
 # Write your test cases for each part below.
@@ -63,19 +63,87 @@ class TestCases(unittest.TestCase):
         self.assertEqual(expected, result)
 
     # Part 5
+    def test_rectangle_area_1(self):
+        x = Rectangle(Point(0, 0), Point(5, 10))
+        input = x
+        result = hw1.rectangle_area(input)
+        expected = 50
+        self.assertEqual(expected, result)
 
+    def test_rectangle_area_2(self):
+        x = Rectangle(Point(-5, -5), Point(5, 5))
+        input = x
+        result = hw1.rectangle_area(input)
+        expected = 100
+        self.assertEqual(expected, result)
 
     # Part 6
+    def test_books_by_author_1(self):
+        name = "James"
+        bk1 = Book("James", "Calculus 8th Edition 2016")
+        bk2 = Book("Rebecca", "Health")
+        books = [bk1, bk2]
+        result = hw1.books_by_author(name, books)
+        expected = [bk1]
+        self.assertEqual(expected, result)
 
+    def test_books_by_author_2(self):
+        name = "qntm"
+        bk1 = Book(["qntm"], "Ed")
+        bk2 = Book("qntm", "Lena")
+        bk3 = Book("Scott", "Unsong")
+        books = [bk1, bk2, bk3]
+        result = hw1.books_by_author(name, books)
+        expected = [bk1, bk2]
+        self.assertEqual(expected, result)
 
     # Part 7
+    def test_circle_bound_1(self):
+        p1 = Point(0, 0)
+        p2 = Point(6, 8)
+        rect = Rectangle(p1, p2)
+        result = hw1.circle_bound(rect)
+        expected = Circle(Point(3, 4), 5)
+        self.assertEqual(expected, result)
 
+    def test_circle_bound_2(self):
+        p1 = Point(-10, -10)
+        p2 = Point(-6, -7)
+        rect = Rectangle(p1, p2)
+        result = hw1.circle_bound(rect)
+        expected = Circle(Point(2, 1.5), 2.5)
+        self.assertEqual(expected, result)
 
     # Part 8
+    def test_below_pay_average_1(self):
+        e1 = Employee("Lucas" , 17)
+        e2 = Employee("Russel", 18)
+        e3 = Employee("Bradley", 18)
+        e4 = Employee("Caleb", 16)
+        e5 = Employee("Bobby", 20)
+        e6 = Employee("Roy", 18)
+        e7 = Employee("Liam", 17)
+        e8 = Employee("Vincent", 19)
+        e9 = Employee("Mason", 16)
+        input = [e1,e2,e3,e4,e5,e6,e7,e8,e9]
+        result = hw1.below_pay_average(input)
+        expected = [e1,e4,e7,e9]
+        self.assertEqual(expected, result)
 
-
-
-
+    def test_below_pay_average_2(self):
+        e1 = Employee("Randy", 16)
+        e2 = Employee("Wayne", 20)
+        e3 = Employee("Albert", 17)
+        e4 = Employee("Willie", 20)
+        e5 = Employee("Elijah", 20)
+        e6 = Employee("Juan", 19)
+        e7 = Employee("Alan", 18)
+        e8 = Employee("Joe", 20)
+        e9 = Employee("Billy", 16)
+        input = [e1, e2, e3, e4, e5, e6, e7, e8, e9]
+        result = hw1.below_pay_average(input)
+        expected = [e1,e3,e7,e9]
+        self.assertEqual(expected, result)
 
 if __name__ == '__main__':
     unittest.main()
