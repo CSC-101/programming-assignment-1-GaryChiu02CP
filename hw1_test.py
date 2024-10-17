@@ -80,8 +80,8 @@ class TestCases(unittest.TestCase):
     # Part 6
     def test_books_by_author_1(self):
         name = "James"
-        bk1 = Book("James", "Calculus 8th Edition 2016")
-        bk2 = Book("Rebecca", "Health")
+        bk1 = Book(["James"], "Calculus 8th Edition 2016")
+        bk2 = Book(["Rebecca"], "Health")
         books = [bk1, bk2]
         result = hw1.books_by_author(name, books)
         expected = [bk1]
@@ -90,8 +90,8 @@ class TestCases(unittest.TestCase):
     def test_books_by_author_2(self):
         name = "qntm"
         bk1 = Book(["qntm"], "Ed")
-        bk2 = Book("qntm", "Lena")
-        bk3 = Book("Scott", "Unsong")
+        bk2 = Book(["qntm", "Victor Wu"], "Lena")
+        bk3 = Book(["Scott"], "Unsong")
         books = [bk1, bk2, bk3]
         result = hw1.books_by_author(name, books)
         expected = [bk1, bk2]
