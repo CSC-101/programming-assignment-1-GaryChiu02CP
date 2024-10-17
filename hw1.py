@@ -8,7 +8,7 @@ from data import Price, Point, Rectangle, Circle, Book, Employee
 def vowel_count(word:str) -> int:
     tally = 0
     for i in word:
-        if i.lower() in ['a','e','i','o','u']:
+        if i.lower() in 'aeiou':
             tally+=1
     return tally
 
